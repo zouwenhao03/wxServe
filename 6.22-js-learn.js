@@ -71,7 +71,7 @@ var employee = {
 // }
 
 String.prototype.render = function (obj) {
-    with(obj) {
+    with (obj) {
         return eval('`' + this + '`')
     }
 }

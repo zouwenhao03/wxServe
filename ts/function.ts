@@ -40,3 +40,22 @@ let result1 = buildName2("Bob");                  // works correctly now, return
 let result2 = buildName2("Bob", undefined);       // still works, also returns "Bob Smith"
 //let result3 = buildName("Bob", "Adams", "Sr.");  // error, too many parameters
 let result4 = buildName("Bob", "Adams");         // ah, just right
+
+//与普通可选参数不同的是，带默认值的参数不需要放在必须参数的后面。 如果带默认值的参数出现在必须参数前面，用户必须明确的传入 undefined值来获得默认值。 
+function getFullName1(firstName ='Will',lastName:string):string{
+      let fullName:string = firstName + lastName
+      return fullName
+}
+getFullName1('kill','zou');
+getFullName1(undefined,'lll');//必须明确的传入 undefined值来获得默认值。
+
+//剩余参数会被当做个数不限的可选参数。 可以一个都没有，同样也可以有任意个。 编译器创建参数数组，名字是你在省略号（ ...）后面给定的名字，你可以在函数体内使用这个数组。
+function getFullName2(firstName:string,...lastName:string[]):string{
+    let fullName:string
+    return fullName = firstName + '' + lastName.join('')
+}
+let fullName1 = getFullName2('aaa','bbb','ccc','ddd');
+console.log(fullName1)//aaabbbcccddd
+let fullName2 = getFullName2('aaa')
+console.log(fullName2)//aaa
+console.log(this)
